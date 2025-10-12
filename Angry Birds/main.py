@@ -264,7 +264,7 @@ def redrawAll(app):
 
         #Sling
         drawImage('images\\sling.png', app.slingX, app.slingY, align = 'center')
-        if app.drag and not app.loss and not app.won: #-------------------------------------------Note: Fix buggy slingshot
+        if app.drag and not app.loss and not app.won: #-------------------------------------------Note: Slingshot physics edit
             drawLine(app.initBirdX, app.initBirdY, app.birdSit[0].x, app.birdSit[0].y, lineWidth = 20)
             #Trajectory
             for point in app.birdSit[0].drawTrajectory(app, 1/2)[0:-1]:
@@ -712,4 +712,5 @@ def onStep(app):
             
 def main():
     runApp()
+
 main()
