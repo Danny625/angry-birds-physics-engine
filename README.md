@@ -7,6 +7,7 @@ I built this as a learning project to practice object-oriented programming, proj
 ## 🍿 Demo
 
 [![Angry Birds Physics Engine Demo](https://img.youtube.com/vi/O0r57TcT31w/maxresdefault.jpg)](https://www.youtube.com/watch?v=O0r57TcT31w)
+
 Alternative link: https://youtu.be/O0r57TcT31w
 
 ## 📦 Technologies
@@ -46,7 +47,7 @@ Objects can fall, slide, rotate, roll, disappear, or damage other objects depend
 
 ### ⚡ Use Bird Abilities
 
-The yellow bird has a speed-up ability that can be activated mid-flight.
+The yellow bird has a speed-up ability that can be activated mid-flight by pressing `Space`.
 
 ## 🎯 Controls
 
@@ -66,4 +67,5 @@ angry-birds-physics-engine/
 ├── main.py          # Screens, level setup, drawing, input handling, and game loop
 ├── objects.py       # Bird/Object classes, gravity, collisions, movement, and rotation
 ├── images/          # Sprites and UI assets
+├── requirements.txt # Python dependency list
 └── README.md
