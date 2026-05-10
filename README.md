@@ -4,6 +4,10 @@ A small Angry Birds-inspired physics game built in Python with CMU Graphics.
 
 I built this as a learning project to practice object-oriented programming, projectile motion, collision physics, and event-driven game logic. The game includes premade levels, a slingshot launch system, destructible objects, bird abilities, scoring, and a builder mode where you can create your own level.
 
+## 🍿 Demo
+
+[![Angry Birds Physics Engine Demo](https://img.youtube.com/vi/O0r57TcT31w/maxresdefault.jpg)](https://www.youtube.com/watch?v=O0r57TcT31w)
+
 ## 📦 Technologies
 
 - Python
