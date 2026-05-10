@@ -1,78 +1,64 @@
-# angry-birds-physics-engine
-By Danny Weng.
+# 🐦 Angry Birds Physics Engine
 
-Physics simulation game inspired by Angry Birds, implemented in Python with CMU Graphics. Includes trajectory modeling, collision physics, and a custom level builder.
+A small Angry Birds-inspired physics game built in Python with CMU Graphics.
 
+I built this as a learning project to practice object-oriented programming, projectile motion, collision physics, and event-driven game logic. The game includes premade levels, a slingshot launch system, destructible objects, bird abilities, scoring, and a builder mode where you can create your own level.
 
+## 📦 Technologies
 
-Project Description
---------------------------
-This project will recreate the classic Angry Birds game, where birds with different abilities are launched at a fortress with the intention of popping the pigs around or inside it. 
+- Python
+- CMU Graphics
+- Object-oriented programming
+- Basic physics simulation
 
-The game will mainly consist of two modes:
-Classic Mode - Premade levels for the player to complete
-Builder Mode - Allows the player to create his own level
+## 🦄 Features
 
-The score of each Classic Mode level will be determined by how much destruction of the base the player caused, as well as how many birds the player used in completing the level. The player will be rewarded one star for a bare minimum score, two stars for a good score, and three stars for a difficult-to-obtain score.
+Here’s what you can do in the game:
 
+### 🎮 Play Classic Mode
 
+Choose from premade levels and try to pop all the pigs by launching birds at different structures.
 
-How To Run Program
-------------------------
-To run the program, install the full 'Angry Birds TP' file. The image resources will also be found in this file.
-In the Editor, open the full folder and run the files 'main' and 'objects'.
-Execute the code from 'main' in order to begin the program.
+Each level has its own pigs, birds, objects, and score thresholds. You can earn one, two, or three stars depending on how much destruction you cause and how many birds you use.
 
+### 🧱 Build Your Own Level
 
-Notes
--------------
-- No libraries were used in this project besides CMU Graphics.
-- No avalible shortcuts in project
-- No required font instillation
+Builder Mode lets you create your own setup by placing birds, pigs, boxes, wheels, and columns onto the map.
 
+Once the level is built, you can press play and test it directly in the game.
 
-Work Cited
----------------
-The Angry Birds LOGO image was taken from the Angry Birds WIKI:
-Link: https://logos.fandom.com/wiki/Angry_Birds/Logo_Variations
+### 🎯 Launch Birds With a Slingshot
 
-All other sprites including birds, pigs, home button, background, stars, and blocks were taken from github user "estevaofon"
-Link:https://github.com/estevaofon/angry-birds-python/tree/master/resources/images
-***No Artwork used in this project is OriginalAngry Birds 112
-By Danny Weng
+Click and drag a bird from the slingshot to aim. The farther you pull back, the stronger the launch.
 
+Before releasing, the game shows a trajectory preview so you can see where the bird is expected to fly.
 
-Project Description
---------------------------
-This project will recreate the classic Angry Birds game, where birds with different abilities are launched at a fortress with the intention of popping the pigs around or inside it. 
+### 💥 Break Structures
 
-The game will mainly consist of two modes:
-Classic Mode - Premade levels for the player to complete
-Builder Mode - Allows the player to create his own level
+The game has custom collision logic between birds, pigs, boxes, columns, and wheels.
 
-The score of each Classic Mode level will be determined by how much destruction of the base the player caused, as well as how many birds the player used in completing the level. The player will be rewarded one star for a bare minimum score, two stars for a good score, and three stars for a difficult-to-obtain score.
+Objects can fall, slide, rotate, roll, disappear, or damage other objects depending on what hits them and what material they are made of.
 
+### ⚡ Use Bird Abilities
 
+The yellow bird has a speed-up ability that can be activated mid-flight.
 
-How To Run Program
-------------------------
-To run the program, install the full 'Angry Birds TP' file. The image resources will also be found in this file.
-In the Editor, open the full folder and run the files 'main' and 'objects'.
-Execute the code from 'main' in order to begin the program.
+## 🎯 Controls
 
+- Click a level button to start a premade level
+- Click Builder Mode to create a custom level
+- Drag a bird from the slingshot to aim
+- Release the mouse to launch
+- Press `Space` to activate the yellow bird ability
+- Click the home button to return to the main menu
 
-Notes
--------------
-- No libraries were used in this project besides CMU Graphics.
-- No avalible shortcuts in project
-- No required font instillation
+## 🧠 How the Code Is Organized
 
+The project is mainly split into two files:
 
-Work Cited
----------------
-The Angry Birds LOGO image was taken from the Angry Birds WIKI:
-Link: https://logos.fandom.com/wiki/Angry_Birds/Logo_Variations
-
-All other sprites including birds, pigs, home button, background, stars, and blocks were taken from github user "estevaofon"
-Link:https://github.com/estevaofon/angry-birds-python/tree/master/resources/images
-***No Artwork used in this project is Original
+```text
+angry-birds-physics-engine/
+├── main.py          # Screens, level setup, drawing, input handling, and game loop
+├── objects.py       # Bird/Object classes, gravity, collisions, movement, and rotation
+├── images/          # Sprites and UI assets
+└── README.md
