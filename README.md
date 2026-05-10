@@ -7,6 +7,7 @@ I built this as a learning project to practice object-oriented programming, proj
 ## 🍿 Demo
 
 [![Angry Birds Physics Engine Demo](https://img.youtube.com/vi/O0r57TcT31w/maxresdefault.jpg)](https://www.youtube.com/watch?v=O0r57TcT31w)
+alternative link: https://youtu.be/O0r57TcT31w
 
 ## 📦 Technologies
 
