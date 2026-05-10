@@ -94,13 +94,13 @@ The main game files are inside the `Angry Birds/` folder:
 ```text
 angry-birds-physics-engine/
 ├── README.md
-├── requirements.txt
 ├── LICENSE
 ├── .gitignore
 └── Angry Birds/
     ├── main.py          # Screens, levels, drawing, input handling, and game loop
     ├── objects.py       # Bird/Object classes, gravity, collisions, movement, and rotation
-    └── images/          # Sprites and UI assets
+    ├── images/          # Sprites and UI assets
+    └── requirements.txt
 ```
 
 ## 🧩 How It Works
