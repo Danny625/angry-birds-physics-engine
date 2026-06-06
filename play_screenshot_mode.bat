@@ -1,0 +1,14 @@
+@echo off
+setlocal
+
+cd /d "%~dp0"
+set "PHYSICS_GAME_HOME=%TEMP%\physics_game_screenshots"
+
+if not exist ".venv\Scripts\python.exe" (
+    py -3 -m venv .venv
+    ".venv\Scripts\python.exe" -m pip install --upgrade pip
+    ".venv\Scripts\python.exe" -m pip install -r requirements.txt
+)
+
+cd game
+"..\.venv\Scripts\python.exe" pygame_main.py
