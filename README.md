@@ -1,4 +1,4 @@
-# 🐦 Angry Birds Physics Engine + Level Sharing API
+# 🐦 Physics Game Engine + Level Sharing API
 
 A local-first 2D physics game upgraded from an Angry Birds-inspired class project into a more complete Python software engineering project.
 
@@ -7,6 +7,7 @@ The current version uses **Pygame** for the playable frontend, a separated game 
 ## Contents
 
 - [Demo](#-demo)
+- [Screenshots](#-screenshots)
 - [Quick Start](#-quick-start)
 - [What This Project Shows](#-what-this-project-shows)
 - [Technologies](#-technologies)
@@ -31,6 +32,20 @@ The current version uses **Pygame** for the playable frontend, a separated game 
 Alternative link: https://youtu.be/O0r57TcT31w
 
 > Note: this video shows an earlier gameplay demo. The current version now includes the Pygame frontend, builder save/load, local high scores, FastAPI backend, automated tests, and Docker setup.
+
+## 📸 Screenshots
+
+### Gameplay
+
+![Gameplay screenshot](docs/screenshots/gameplay.png)
+
+### Builder Mode
+
+![Builder mode screenshot](docs/screenshots/builder-mode.png)
+
+### Saved Levels / High Scores
+
+![Saved levels or high scores](docs/screenshots/saves-or-highscores.png)
 
 ## 🚀 Quick Start
 
@@ -186,6 +201,14 @@ From the project root:
 play_game.bat
 ```
 
+### Screenshot mode
+
+For capturing README screenshots, you can also run:
+
+```powershell
+play_screenshot_mode.bat
+```
+
 ### Manual Windows setup
 
 ```powershell
@@ -280,7 +303,7 @@ http://127.0.0.1:8000/docs
 
 ## 🧠 Architecture
 
-The upgraded project is split into layers so the game logic, UI, persistence, API, and tests each have clear responsibilities.
+The project is split into layers so the game logic, UI, persistence, API, and tests each have clear responsibilities.
 
 ```text
 angry-birds-physics-engine/
@@ -289,8 +312,14 @@ angry-birds-physics-engine/
 ├── requirements.txt
 ├── Dockerfile
 ├── play_game.bat
+├── play_screenshot_mode.bat
 ├── .gitignore
 ├── .dockerignore
+├── docs/
+│   └── screenshots/
+│       ├── gameplay.png
+│       ├── builder-mode.png
+│       └── saves-or-highscores.png
 └── game/
     ├── pygame_main.py
     ├── pytest.ini
@@ -459,9 +488,9 @@ The repository root stays clean for GitHub visitors, while the actual game code,
 
 ## 💭 Future Improvements
 
-- Add updated screenshots and a short gameplay GIF
-- Add a builder mode screenshot
-- Add a FastAPI docs screenshot
+- Add an updated gameplay GIF
+- Add a FastAPI docs screenshot from a local run
+- Add a tests-passing screenshot from a local terminal
 - Connect the Pygame builder UI directly to the local API for one-click publish/load
 - Add an in-game API status panel
 - Add more regression tests for edge-case physics interactions
