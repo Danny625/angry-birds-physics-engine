@@ -4,6 +4,25 @@ A local-first 2D physics game upgraded from an Angry Birds-inspired CMU Graphics
 
 The active version uses **Pygame** for the playable frontend, a separated game engine for physics and game state, **JSON serialization** for custom levels, **SQLite** for local persistence, **FastAPI** for level and leaderboard endpoints, **pytest** for automated tests, and **Docker** for reproducible backend execution.
 
+## Contents
+
+- [Demo](#-demo)
+- [What This Project Shows](#-what-this-project-shows)
+- [Technologies](#-technologies)
+- [Features](#-features)
+- [How to Play](#-how-to-play)
+- [How to Run the Game](#-how-to-run-the-game)
+- [How to Run the API](#-how-to-run-the-api)
+- [How to Run Tests](#-how-to-run-tests)
+- [Docker](#-docker)
+- [Architecture](#-architecture)
+- [Example API Payloads](#-example-api-payloads)
+- [Runtime Data](#-runtime-data)
+- [Design Decisions](#-design-decisions)
+- [What I Learned](#-what-i-learned)
+- [Future Improvements](#-future-improvements)
+- [Asset Credits](#-asset-credits)
+
 ## 🍿 Demo
 
 [![Angry Birds Physics Engine Demo](https://img.youtube.com/vi/O0r57TcT31w/maxresdefault.jpg)](https://www.youtube.com/watch?v=O0r57TcT31w)
@@ -16,14 +35,14 @@ Alternative link: https://youtu.be/O0r57TcT31w
 
 This started as a playable game, but I upgraded it to show broader software engineering skills:
 
-- modular Python architecture
-- separation of game logic from rendering/input
-- JSON serialization and deserialization for levels
-- local SQLite persistence for high scores
-- FastAPI backend for levels and leaderboard scores
-- pytest coverage for engine, persistence, serialization, and API behavior
+- Modular Python architecture
+- Game logic separated from rendering and input
+- JSON serialization/deserialization for reusable levels
+- SQLite persistence for local high scores
+- FastAPI backend for level and leaderboard data
+- Pytest coverage for engine, persistence, serialization, and API behavior
 - Dockerized backend setup for reproducible local execution
-- preserved legacy version plus active modern version
+- Preserved legacy version plus active modern version
 
 ## 📦 Technologies
 
@@ -42,29 +61,29 @@ This started as a playable game, but I upgraded it to show broader software engi
 
 The active version runs in Pygame and keeps the original Angry Birds-style gameplay: launch birds, hit structures, pop pigs, earn points, and clear levels.
 
-The game now has a cleaner frontend layer for rendering, menus, buttons, overlays, keyboard controls, mouse input, and gameplay HUD.
+The frontend handles drawing, menus, buttons, overlays, keyboard controls, mouse input, and the gameplay HUD.
 
 ### 🧱 Builder Mode
 
-Builder Mode lets you create and test custom levels.
+Builder Mode lets you create, edit, save, load, and playtest custom levels.
 
 You can:
 
-- add birds to the launch queue
-- place pigs and structures
-- clear birds separately from structures
-- playtest custom layouts
-- save levels with custom names
-- load saved builder levels
-- replace edited saves
-- delete saved levels
-- page through saved levels when the list grows
+- Add birds to the launch queue
+- Place pigs and structures
+- Clear birds separately from structures
+- Playtest custom layouts
+- Save levels with custom names
+- Load saved builder levels
+- Replace edited saves
+- Delete saved levels
+- Page through saved levels when the list grows
 
 ### 💾 JSON Level Save/Load
 
 Custom levels are saved as JSON files.
 
-That means the game can turn an in-memory level into a reusable file, then load that file later and rebuild the same level. This supports built-in levels, builder levels, named save slots, and replace-save workflows.
+The game can turn an in-memory level into a reusable JSON file, then load that file later and rebuild the same level. This supports built-in levels, builder levels, named save slots, and replace-save workflows.
 
 ### 🏆 Local High Scores
 
@@ -76,10 +95,10 @@ When you beat a built-in level, the game checks whether your score is a new best
 
 The engine supports different bird behaviors:
 
-- Red Bird: standard impact bird
-- Yellow Bird: speed burst
-- Blue Bird: splits into three smaller birds
-- Mighty Eagle: redirects downward into a vertical slam
+- **Red Bird:** standard impact bird
+- **Yellow Bird:** speed burst
+- **Blue Bird:** splits into three smaller birds
+- **Mighty Eagle:** redirects downward into a vertical slam
 
 ### 🌐 FastAPI Backend
 
@@ -106,18 +125,34 @@ http://127.0.0.1:8000/docs
 
 The project includes pytest coverage for important behavior, including:
 
-- level JSON round trips
-- saving and loading level files
-- numbered builder save slots
-- built-in level loading
+- Level JSON round trips
+- Saving and loading level files
+- Numbered builder save slots
+- Built-in level loading
 - Blue Bird split behavior
 - Mighty Eagle slam behavior
-- builder save/load
-- builder replace-save
-- local high score persistence
+- Builder save/load
+- Builder replace-save
+- Local high score persistence
 - API health route
 - API level creation and retrieval
 - API leaderboard sorting
+
+## 🎮 How to Play
+
+- Choose a built-in level from the main menu.
+- Drag a bird backward from the slingshot to aim.
+- Release the mouse to launch.
+- Use each bird’s ability while it is in flight.
+- Pop all pigs before running out of birds.
+- Earn stars based on your score.
+- If you beat your best score on a built-in level, the new high score is saved locally.
+
+### Builder Mode
+
+In Builder Mode, you can place pigs, blocks, and birds, then playtest the layout.
+
+You can also save custom levels as named JSON slots, load them later, edit them, replace the saved version, or delete old saves.
 
 ## 🚦 How to Run the Game
 
@@ -146,7 +181,7 @@ pip install -r requirements.txt
 python pygame_main.py
 ```
 
-On Windows, you can also use:
+On Windows, you can also run:
 
 ```powershell
 run_pygame.bat
@@ -265,69 +300,31 @@ angry-birds-physics-engine/
     └── PROJECT_UPGRADE_SUMMARY.md
 ```
 
-### Game Engine
+### Main layers
 
 ```text
 modern_pygame/angrybirds/engine.py
 ```
 
-Owns the core game logic:
-
-- physics ticks
-- collisions
-- scoring
-- bird abilities
-- win/loss rules
-- builder state
-- game state transitions
-- builder save/load behavior
-
-### Data Models
+Owns the core game logic: physics ticks, collisions, scoring, bird abilities, win/loss rules, builder state, save/load behavior, and game state transitions.
 
 ```text
 modern_pygame/angrybirds/models.py
 ```
 
-Defines the main game objects:
-
-- birds
-- pigs
-- world bodies
-- levels
-- runtime game state
-
-### Rendering and Input
+Defines the main game objects: birds, pigs, world bodies, levels, and runtime game state.
 
 ```text
 modern_pygame/angrybirds/pygame_client.py
 ```
 
-Handles the playable interface:
-
-- drawing
-- menus
-- buttons
-- overlays
-- mouse input
-- keyboard input
-- builder UI
-- playtest UI
-
-### Level Serialization
+Handles drawing, menus, buttons, overlays, mouse input, keyboard input, builder UI, and playtest UI.
 
 ```text
 modern_pygame/angrybirds/levels.py
 ```
 
-Handles:
-
-- loading built-in levels
-- converting levels to JSON
-- rebuilding levels from JSON
-- saving custom builder levels
-- discovering numbered save slots
-
-### Local Score Persistence
+Handles built-in level loading, level-to-JSON conversion, JSON-to-level rebuilding, custom level saves, and numbered save slot discovery.
 
 ```text
 modern_pygame/angrybirds/scores.py
@@ -335,15 +332,11 @@ modern_pygame/angrybirds/scores.py
 
 Handles local SQLite high scores used by the Pygame game.
 
-### Backend API
-
 ```text
 modern_pygame/api/
 ```
 
 Provides REST endpoints for saved levels and leaderboard scores.
-
-### Tests
 
 ```text
 modern_pygame/tests/
