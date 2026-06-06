@@ -1,0 +1,25 @@
+{
+  "id": "sample_level",
+  "name": "Sample Level",
+  "birds": ["yellow", "blue", "eagle", "red"],
+  "pigs": [
+    { "x": 860, "y": 396 },
+    { "x": 1020, "y": 474 },
+    { "x": 1180, "y": 315 }
+  ],
+  "objects": [
+    { "kind": "column", "x": 820, "y": 590, "angle": 0, "material": "wood" },
+    { "kind": "column", "x": 900, "y": 590, "angle": 0, "material": "wood" },
+    { "kind": "box", "x": 860, "y": 469, "angle": 0, "material": "stone" },
+    { "kind": "wheel", "x": 1020, "y": 625, "angle": 0, "material": "stone" },
+    { "kind": "box", "x": 1020, "y": 547, "angle": 0, "material": "wood" },
+    { "kind": "column", "x": 1180, "y": 590, "angle": 0, "material": "stone" },
+    { "kind": "box", "x": 1180, "y": 470, "angle": 0, "material": "wood" },
+    { "kind": "box", "x": 1180, "y": 388, "angle": 0, "material": "stone" }
+  ],
+  "stars": {
+    "one": 1200,
+    "two": 1700,
+    "three": 2200
+  }
+}

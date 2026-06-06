@@ -1,0 +1,19 @@
+{
+  "id": "level2",
+  "name": "Level 2",
+  "stars": {
+    "one": 600,
+    "two": 700,
+    "three": 1000
+  },
+  "birds": ["yellow", "red", "red"],
+  "pigs": [
+    { "x": 650, "y": 100 },
+    { "x": 1200, "y": 100 }
+  ],
+  "objects": [
+    { "kind": "column", "x": 400, "y": 200, "angle": 0, "material": "wood" },
+    { "kind": "column", "x": 1000, "y": 200, "angle": 0, "material": "stone" }
+  ]
+}
+

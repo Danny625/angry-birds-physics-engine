@@ -1,0 +1,23 @@
+{
+  "id": "level1",
+  "name": "Level 1",
+  "stars": {
+    "one": 800,
+    "two": 1100,
+    "three": 1300
+  },
+  "birds": ["yellow", "red", "red"],
+  "pigs": [
+    { "x": 600, "y": 300 },
+    { "x": 800, "y": 400 },
+    { "x": 1000, "y": 500 }
+  ],
+  "objects": [
+    { "kind": "box", "x": 1000, "y": 600, "angle": 0, "material": "wood" },
+    { "kind": "box", "x": 800, "y": 600, "angle": 0, "material": "wood" },
+    { "kind": "box", "x": 800, "y": 500, "angle": 0, "material": "wood" },
+    { "kind": "box", "x": 600, "y": 600, "angle": 0, "material": "stone" },
+    { "kind": "box", "x": 600, "y": 500, "angle": 0, "material": "stone" },
+    { "kind": "box", "x": 600, "y": 400, "angle": 0, "material": "wood" }
+  ]
+}

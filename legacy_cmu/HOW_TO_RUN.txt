@@ -1,0 +1,15 @@
+Legacy CMU Angry Birds Run Guide
+
+Fastest option:
+1. Double-click launch_legacy_game.bat in the main Angry Birds folder.
+
+If you want to run it from a terminal:
+1. Open PowerShell
+2. Run:
+   cd "C:\Users\Danny\OneDrive\Desktop\15-112\TP3\Angry Birds\legacy_cmu"
+3. Then run:
+   .\.venv\Scripts\python.exe main.py
+
+This project uses its own local virtual environment.
+You do not need to choose a global interpreter manually.
+The environment is based on Python 3.9 with cmu-graphics.

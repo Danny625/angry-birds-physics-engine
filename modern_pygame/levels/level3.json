@@ -1,0 +1,17 @@
+{
+  "id": "level3",
+  "name": "Level 3",
+  "stars": {
+    "one": 600,
+    "two": 700,
+    "three": 800
+  },
+  "birds": ["red", "red"],
+  "pigs": [
+    { "x": 700, "y": 500 },
+    { "x": 1000, "y": 500 }
+  ],
+  "objects": [
+    { "kind": "wheel", "x": 500, "y": 500, "angle": 0, "material": "wood" }
+  ]
+}

@@ -1,0 +1,23 @@
+Angry Birds Workspace Guide
+
+Use these folders:
+
+1. modern_pygame
+   This is the active project.
+   Use this for all new development and testing.
+   Run it with launch_modern_game.bat.
+
+2. legacy_cmu
+   This is the preserved original CMU Graphics version.
+   Do not edit this unless you specifically want to compare against the old build.
+   Run it with launch_legacy_game.bat.
+
+3. _archive
+   This stores the old mixed root snapshot so nothing was lost during cleanup.
+
+Notes:
+- launch_modern_game.bat is the main launcher to use for the upgraded project.
+- launch_legacy_game.bat runs the original version.
+- Each project now has its own local .venv, so you do not need to pick a Python interpreter manually.
+- There is only one upgraded project now: modern_pygame.
+- The root is no longer the place to edit code. Work inside modern_pygame.

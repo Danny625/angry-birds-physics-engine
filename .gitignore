@@ -205,3 +205,11 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Angry Birds local runtime files
+modern_pygame/data/*.db
+modern_pygame/data/*.sqlite
+modern_pygame/data/*.sqlite3
+modern_pygame/saved_levels/*.json
+!modern_pygame/data/.gitkeep
+!modern_pygame/saved_levels/.gitkeep

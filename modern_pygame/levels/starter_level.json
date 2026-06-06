@@ -1,0 +1,18 @@
+{
+  "id": "starter_level",
+  "name": "Starter Level",
+  "birds": ["red", "yellow"],
+  "pigs": [
+    { "x": 940, "y": 455 }
+  ],
+  "objects": [
+    { "kind": "box", "x": 900, "y": 618, "angle": 0, "material": "wood" },
+    { "kind": "box", "x": 980, "y": 618, "angle": 0, "material": "wood" },
+    { "kind": "box", "x": 940, "y": 536, "angle": 0, "material": "stone" }
+  ],
+  "stars": {
+    "one": 500,
+    "two": 900,
+    "three": 1300
+  }
+}
