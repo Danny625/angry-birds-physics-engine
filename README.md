@@ -1,12 +1,13 @@
-# 🐦 Physics Game Engine + Level Sharing API
+# 🐦 Angry Birds Physics Engine + Level Sharing API
 
-A local-first 2D physics game upgraded from an Angry Birds-inspired CMU Graphics project into a modular Python software engineering project.
+A local-first 2D physics game upgraded from an Angry Birds-inspired class project into a more complete Python software engineering project.
 
-The active version uses **Pygame** for the playable frontend, a separated game engine for physics and game state, **JSON serialization** for custom levels, **SQLite** for local persistence, **FastAPI** for level and leaderboard endpoints, **pytest** for automated tests, and **Docker** for reproducible backend execution.
+The current version uses **Pygame** for the playable frontend, a separated game engine for physics and game state, **JSON** for custom level save/load, **SQLite** for local persistence, **FastAPI** for level and leaderboard endpoints, **pytest** for automated tests, and **Docker** for reproducible backend execution.
 
 ## Contents
 
 - [Demo](#-demo)
+- [Quick Start](#-quick-start)
 - [What This Project Shows](#-what-this-project-shows)
 - [Technologies](#-technologies)
 - [Features](#-features)
@@ -29,7 +30,29 @@ The active version uses **Pygame** for the playable frontend, a separated game e
 
 Alternative link: https://youtu.be/O0r57TcT31w
 
-> Note: this video shows the original gameplay demo. The upgraded version now includes the modern Pygame frontend, builder save/load, local high scores, API backend, tests, and Docker setup.
+> Note: this video shows an earlier gameplay demo. The current version now includes the Pygame frontend, builder save/load, local high scores, FastAPI backend, automated tests, and Docker setup.
+
+## 🚀 Quick Start
+
+### Easiest way on Windows
+
+From the project root, run:
+
+```powershell
+play_game.bat
+```
+
+This script creates a local virtual environment, installs dependencies, and launches the game.
+
+### Manual setup
+
+```bash
+git clone https://github.com/Danny625/angry-birds-physics-engine.git
+cd angry-birds-physics-engine
+python -m pip install -r requirements.txt
+cd game
+python pygame_main.py
+```
 
 ## 🧠 What This Project Shows
 
@@ -38,11 +61,11 @@ This started as a playable game, but I upgraded it to show broader software engi
 - Modular Python architecture
 - Game logic separated from rendering and input
 - JSON serialization/deserialization for reusable levels
-- SQLite persistence for local high scores
+- SQLite persistence for local high scores and backend data
 - FastAPI backend for level and leaderboard data
 - Pytest coverage for engine, persistence, serialization, and API behavior
 - Dockerized backend setup for reproducible local execution
-- Preserved legacy version plus active modern version
+- Clean project layout with the playable game, backend, assets, and tests organized under `game/`
 
 ## 📦 Technologies
 
@@ -53,15 +76,14 @@ This started as a playable game, but I upgraded it to show broader software engi
 - pytest
 - Docker
 - JSON
-- CMU Graphics, preserved in the legacy version
 
 ## ✨ Features
 
 ### 🎮 Modern Pygame Game
 
-The active version runs in Pygame and keeps the original Angry Birds-style gameplay: launch birds, hit structures, pop pigs, earn points, and clear levels.
+The active version runs in Pygame and keeps the Angry Birds-style gameplay: launch birds, hit structures, pop pigs, earn points, and clear levels.
 
-The frontend handles drawing, menus, buttons, overlays, keyboard controls, mouse input, and the gameplay HUD.
+The frontend handles drawing, menus, buttons, overlays, keyboard controls, mouse input, gameplay HUD, and builder mode UI.
 
 ### 🧱 Builder Mode
 
@@ -83,7 +105,7 @@ You can:
 
 Custom levels are saved as JSON files.
 
-The game can turn an in-memory level into a reusable JSON file, then load that file later and rebuild the same level. This supports built-in levels, builder levels, named save slots, and replace-save workflows.
+The game can turn an in-memory level into reusable JSON, save that level, load it later, and rebuild the same layout. This supports built-in levels, builder levels, named save slots, replace-save workflows, and delete-save workflows.
 
 ### 🏆 Local High Scores
 
@@ -156,55 +178,49 @@ You can also save custom levels as named JSON slots, load them later, edit them,
 
 ## 🚦 How to Run the Game
 
-### 1. Clone the repo
+### Windows shortcut
 
-```bash
-git clone https://github.com/Danny625/angry-birds-physics-engine.git
-cd angry-birds-physics-engine
-```
-
-### 2. Go into the modern version
-
-```bash
-cd "Angry Birds/modern_pygame"
-```
-
-### 3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run the game
-
-```bash
-python pygame_main.py
-```
-
-On Windows, you can also run:
+From the project root:
 
 ```powershell
-run_pygame.bat
+play_game.bat
+```
+
+### Manual Windows setup
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+cd game
+..\.venv\Scripts\python.exe pygame_main.py
+```
+
+### Manual macOS/Linux setup
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cd game
+python pygame_main.py
 ```
 
 ## 🌐 How to Run the API
 
-From the modern project folder:
+The API runs locally with FastAPI.
 
-```bash
-cd "Angry Birds/modern_pygame"
-```
-
-Run:
-
-```bash
-python -m uvicorn api.app:create_app --factory --host 127.0.0.1 --port 8000
-```
-
-Or on Windows:
+### Windows
 
 ```powershell
-run_api.bat
+cd game
+..\.venv\Scripts\python.exe -m uvicorn api.app:create_app --factory --host 127.0.0.1 --port 8000
+```
+
+### macOS/Linux
+
+```bash
+cd game
+python -m uvicorn api.app:create_app --factory --host 127.0.0.1 --port 8000
 ```
 
 Then open:
@@ -216,27 +232,37 @@ http://127.0.0.1:8000/docs
 
 ## 🧪 How to Run Tests
 
-From the modern project folder:
+Install dependencies first:
 
 ```bash
-cd "Angry Birds/modern_pygame"
-pytest
+python -m pip install -r requirements.txt
 ```
 
-Or on Windows:
+Then run tests from the `game/` folder.
+
+### Windows
 
 ```powershell
-run_tests.bat
+cd game
+..\.venv\Scripts\python.exe -m pytest tests
+```
+
+### macOS/Linux
+
+```bash
+cd game
+python -m pytest tests
 ```
 
 ## 🐳 Docker
 
-Docker is used for the FastAPI backend, not the Pygame window.
+Docker is used for the FastAPI backend, not the Pygame game window.
+
+You do not need Docker to play the game. Docker is included so the backend can be packaged and run in a reproducible local environment.
 
 Build the backend image from the project root:
 
 ```bash
-cd "Angry Birds"
 docker build -t physics-game-api .
 ```
 
@@ -260,86 +286,84 @@ The upgraded project is split into layers so the game logic, UI, persistence, AP
 angry-birds-physics-engine/
 ├── README.md
 ├── LICENSE
+├── requirements.txt
+├── Dockerfile
+├── play_game.bat
 ├── .gitignore
-└── Angry Birds/
-    ├── legacy_cmu/
-    │   ├── main.py
-    │   ├── objects.py
-    │   ├── images/
-    │   └── HOW_TO_RUN.txt
+├── .dockerignore
+└── game/
+    ├── pygame_main.py
+    ├── pytest.ini
     │
-    ├── modern_pygame/
-    │   ├── angrybirds/
-    │   │   ├── constants.py
-    │   │   ├── engine.py
-    │   │   ├── levels.py
-    │   │   ├── models.py
-    │   │   ├── pygame_client.py
-    │   │   └── scores.py
-    │   │
-    │   ├── api/
-    │   │   ├── app.py
-    │   │   ├── database.py
-    │   │   ├── models.py
-    │   │   ├── schemas.py
-    │   │   └── routes/
-    │   │       ├── levels.py
-    │   │       └── scores.py
-    │   │
-    │   ├── images/
-    │   ├── levels/
-    │   ├── saved_levels/
-    │   ├── tests/
-    │   ├── pygame_main.py
-    │   ├── requirements.txt
-    │   ├── run_api.bat
-    │   ├── run_pygame.bat
-    │   └── run_tests.bat
+    ├── angrybirds/
+    │   ├── constants.py
+    │   ├── engine.py
+    │   ├── levels.py
+    │   ├── models.py
+    │   ├── pygame_client.py
+    │   └── scores.py
     │
-    ├── Dockerfile
-    └── PROJECT_UPGRADE_SUMMARY.md
+    ├── api/
+    │   ├── app.py
+    │   ├── database.py
+    │   ├── models.py
+    │   ├── schemas.py
+    │   └── routes/
+    │       ├── levels.py
+    │       └── scores.py
+    │
+    ├── images/
+    ├── levels/
+    ├── data/
+    ├── saved_levels/
+    └── tests/
+        ├── conftest.py
+        ├── test_api.py
+        ├── test_engine.py
+        ├── test_levels.py
+        └── test_scores.py
 ```
 
 ### Main layers
 
 ```text
-modern_pygame/angrybirds/engine.py
+game/angrybirds/engine.py
 ```
 
 Owns the core game logic: physics ticks, collisions, scoring, bird abilities, win/loss rules, builder state, save/load behavior, and game state transitions.
 
 ```text
-modern_pygame/angrybirds/models.py
+game/angrybirds/models.py
 ```
 
 Defines the main game objects: birds, pigs, world bodies, levels, and runtime game state.
 
 ```text
-modern_pygame/angrybirds/pygame_client.py
+game/angrybirds/pygame_client.py
 ```
 
 Handles drawing, menus, buttons, overlays, mouse input, keyboard input, builder UI, and playtest UI.
 
 ```text
-modern_pygame/angrybirds/levels.py
+game/angrybirds/levels.py
 ```
 
 Handles built-in level loading, level-to-JSON conversion, JSON-to-level rebuilding, custom level saves, and numbered save slot discovery.
 
 ```text
-modern_pygame/angrybirds/scores.py
+game/angrybirds/scores.py
 ```
 
 Handles local SQLite high scores used by the Pygame game.
 
 ```text
-modern_pygame/api/
+game/api/
 ```
 
 Provides REST endpoints for saved levels and leaderboard scores.
 
 ```text
-modern_pygame/tests/
+game/tests/
 ```
 
 Contains automated tests for engine behavior, serialization, persistence, high scores, and API routes.
@@ -402,23 +426,25 @@ You can override the runtime location by setting:
 PHYSICS_GAME_HOME
 ```
 
+The tracked `game/data/` and `game/saved_levels/` folders only contain placeholders. Actual runtime databases and custom saved levels are ignored by Git.
+
 ## 👩‍🍳 Design Decisions
-
-### Why keep the original CMU Graphics version?
-
-The original version is preserved in `legacy_cmu/` to show the starting point and avoid rewriting history.
 
 ### Why migrate to Pygame?
 
-Pygame is a more recognizable standalone Python game framework. Migrating made the project easier to present as an independent software engineering project while keeping the original class version available.
+Pygame is a more recognizable standalone Python game framework than CMU Graphics. Migrating made the project easier to present as an independent software engineering project while keeping the original gameplay idea.
 
 ### Why local-first?
 
-The goal was to demonstrate software engineering skills without paid hosting or maintenance. SQLite stores data locally, FastAPI runs on localhost, and Docker packages the backend for reproducible local execution.
+The goal was to demonstrate software engineering skills without paid hosting or long-term maintenance. SQLite stores data locally, FastAPI runs on localhost, and Docker packages the backend for reproducible local execution.
 
 ### Why separate the API from the game?
 
 The Pygame game can run on its own, while the FastAPI backend demonstrates REST API and database-backed persistence. Keeping them separate avoids overcomplicating the game loop.
+
+### Why keep the code in a `game/` folder?
+
+The repository root stays clean for GitHub visitors, while the actual game code, assets, levels, API, and tests live together in one organized project folder.
 
 ## 📚 What I Learned
 
@@ -443,7 +469,7 @@ The Pygame game can run on its own, while the FastAPI backend demonstrates REST 
 
 ## 🎨 Asset Credits
 
-This project was built for learning purposes. The artwork is not original.
+This project was built for learning and portfolio purposes. The artwork is not original, and this project is not affiliated with Rovio or the official Angry Birds franchise.
 
 - Angry Birds logo image from the Angry Birds Wiki
 - Bird, pig, block, background, star, and UI sprites adapted from GitHub user `estevaofon`'s Angry Birds Python resources
