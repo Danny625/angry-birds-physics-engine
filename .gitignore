@@ -207,9 +207,9 @@ marimo/_lsp/
 __marimo__/
 
 # Angry Birds local runtime files
-data/*.db
-data/*.sqlite
-data/*.sqlite3
-saved_levels/*.json
-!data/.gitkeep
-!saved_levels/.gitkeep
+game/data/*.db
+game/data/*.sqlite
+game/data/*.sqlite3
+game/saved_levels/*.json
+!game/data/.gitkeep
+!game/saved_levels/.gitkeep

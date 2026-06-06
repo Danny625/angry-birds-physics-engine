@@ -3,8 +3,9 @@
 __pycache__/
 **/__pycache__/
 .pytest_cache/
-data/
-saved_levels/
+game/data/
+game/saved_levels/
+game/tests/
 *.pyc
 *.pyo
 *.db
