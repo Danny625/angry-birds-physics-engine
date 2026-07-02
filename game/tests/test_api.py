@@ -89,3 +89,24 @@ def test_scores_and_leaderboard_are_sorted_descending(tmp_path) -> None:
     leaderboard_rows = leaderboard.json()
     assert [row["player"] for row in leaderboard_rows] == ["Blair", "Alex"]
     assert [row["score"] for row in leaderboard_rows] == [2200, 1200]
+
+
+def test_score_rejects_blank_player_name(tmp_path) -> None:
+    level_payload = level_to_dict(load_level("level3"))
+
+    with build_client(tmp_path) as client:
+        level_response = client.post(
+            "/levels",
+            json={
+                "name": "Leaderboard Level",
+                "author": "Danny",
+                "level_json": level_payload,
+            },
+        )
+        level_id = level_response.json()["id"]
+        response = client.post(
+            "/scores",
+            json={"level_id": level_id, "player": "", "score": 1200},
+        )
+
+    assert response.status_code == 422

@@ -40,7 +40,7 @@ class LevelResponse(BaseModel):
 
 class ScoreCreate(BaseModel):
     level_id: int
-    player: str
+    player: str = Field(min_length=1, max_length=80)
     score: int = Field(ge=0)
 
 
