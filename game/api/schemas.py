@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class HealthResponse(BaseModel):
@@ -42,6 +42,11 @@ class ScoreCreate(BaseModel):
     level_id: int
     player: str = Field(min_length=1, max_length=80)
     score: int = Field(ge=0)
+
+    @field_validator("player", mode="before")
+    @classmethod
+    def strip_player_name(cls, value: object) -> object:
+        return value.strip() if isinstance(value, str) else value
 
 
 class ScoreResponse(BaseModel):

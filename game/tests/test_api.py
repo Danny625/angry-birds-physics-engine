@@ -75,7 +75,7 @@ def test_scores_and_leaderboard_are_sorted_descending(tmp_path) -> None:
 
         low_score = client.post(
             "/scores",
-            json={"level_id": level_id, "player": "Alex", "score": 1200},
+            json={"level_id": level_id, "player": " Alex ", "score": 1200},
         )
         high_score = client.post(
             "/scores",
@@ -104,9 +104,12 @@ def test_score_rejects_blank_player_name(tmp_path) -> None:
             },
         )
         level_id = level_response.json()["id"]
-        response = client.post(
-            "/scores",
-            json={"level_id": level_id, "player": "", "score": 1200},
-        )
+        responses = [
+            client.post(
+                "/scores",
+                json={"level_id": level_id, "player": player, "score": 1200},
+            )
+            for player in ("", "   ", "\t\n")
+        ]
 
-    assert response.status_code == 422
+    assert all(response.status_code == 422 for response in responses)
